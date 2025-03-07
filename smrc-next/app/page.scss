@@ -1,38 +1,6 @@
-:root {
-    --background-color: #1E1E1E;
-    --navbar-color: #2C2F33;
-    --navbar-hover: #40444B;
-    --border-color: #4F545C;
-    --navbar-active: #B84730;
-    
-    --text-color: #E4E6EB;
-    --text-hover: #B0B3B8;
-    --text-active: #D65A31;
-
-    --button-hover: #D65A31;
-}
-
-html {
-    background-color: var(--background-color);
-}
-
 #root>div {
     height: 100%;
     width: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
 }
 
 .home-container {
@@ -58,12 +26,13 @@ code {
     }
 
     @keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
     .login-buttons {

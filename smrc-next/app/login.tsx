@@ -1,12 +1,13 @@
 "use client";
 import React, { useState, FormEvent, ChangeEvent } from 'react';
-import axios from 'axios';
+import { useRouter } from 'next/navigation'
 import './login.scss';
 
-const Login = ({ loginType }: { loginType: string | null}) => {
+const Login = ({ loginType }: { loginType: string | null }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter()
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
@@ -17,14 +18,20 @@ const Login = ({ loginType }: { loginType: string | null}) => {
     }
 
     try {
-      const response = await axios.post(
-        'https://smrc-be-fec2hkfsghffe6e6.eastus2-01.azurewebsites.net/api/auth/login',
-        { username, password }
-      );
-      localStorage.setItem('token', response.data.token);
-      //router.push('/home');
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Login failed');
+      }
+
+      router.push('/home');
     } catch (err: any) {
-      setError(err.response.data.message);
+      setError(err.message);
     }
   };
 
@@ -44,13 +51,21 @@ const Login = ({ loginType }: { loginType: string | null}) => {
     }
 
     try {
-      await axios.post(
-        'https://smrc-be-fec2hkfsghffe6e6.eastus2-01.azurewebsites.net/api/auth/register',
-        { username, password }
-      );
-      //router.push('/');
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Registration failed');
+      }
+
+      router.push('/');
     } catch (err: any) {
-      setError(err.response.data.message);
+      setError(err.message);
     }
   };
 

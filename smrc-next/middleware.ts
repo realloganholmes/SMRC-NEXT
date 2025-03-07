@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { cookies } from "next/headers";
 
-export function middleware(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
+export async function middleware(req: NextRequest) {
+  const session = (await cookies()).get("user");
   const protectedRoutes = ["/home", "/recaps", "/rfg", "/races", "/coolers", "/admin"];
 
-  if (!token && protectedRoutes.includes(req.nextUrl.pathname)) {
+  console.log("Session Cookie:", session);
+
+  if (!session && protectedRoutes.includes(req.nextUrl.pathname)) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 

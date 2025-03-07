@@ -1,0 +1,54 @@
+.private-route-container {
+    .navbar {
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--navbar-color);
+        gap: 0px;
+        height: 50px;
+    }
+
+    .navbar>div {
+        color: var(--text-hover);
+        font-size: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar>div:hover:not(.selected) {
+        color: var(--text-hover);
+        background-color: var(--navbar-hover);
+    }
+
+    .navbar>div:hover {
+        cursor: pointer;
+    }
+
+    .selected {
+        color: var(--text-active);
+        background-color: var(--navbar-active);
+    }
+
+    .background {
+        width: 100%;
+        height: 100%;
+        background: var(--background-color);
+    }
+
+    .navbar.small {
+        display: none;
+    }
+
+    @media(max-width: 950px) {
+        .navbar>div {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+    }
+}

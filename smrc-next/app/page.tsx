@@ -1,16 +1,18 @@
 "use client";
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation'
 import Login from './login';
 import './page.scss';
 
 const Home = () => {
   const [loginType, setLoginType] = useState<'login' | 'register' | null>(null);
+  const router = useRouter()
 
-  /*useEffect(() => {
+  useEffect(() => {
     if (localStorage.getItem('token')) {
       router.push('/home');
     }
-  }, [router]);*/
+  }, [router]);
 
   useEffect(() => {
     const handleResize = () => {
