@@ -21,13 +21,13 @@ export default function NavLayout({ children, elName }: { children: React.ReactN
   return (
     <div className="private-route-container">
       <div className="navbar">
-        <div className={elName === 'home' ? 'selected' : ''} onClick={() => handleNav('/home')}><IoMdHome /></div>
-        <div className={elName === 'recaps' ? 'selected' : ''} onClick={() => handleNav('/recaps')}><FaNewspaper /></div>
-        <div className={elName === 'rfg' ? 'selected' : ''} onClick={() => handleNav('/rfg')}><FaMedal /></div>
-        <div className={elName === 'races' ? 'selected' : ''} onClick={() => handleNav('/races')}><FaPersonRunning /></div>
-        <div className={elName === 'coolers' ? 'selected' : ''} onClick={() => handleNav('/coolers')}><PiTreasureChestFill /></div>
+        <div className={elName === 'dashboard' ? 'selected' : ''} onMouseDown={() => handleNav('/home')}><IoMdHome /></div>
+        <div className={elName === 'recaps' ? 'selected' : ''} onMouseDown={() => handleNav('/recaps')}><FaNewspaper /></div>
+        <div className={elName === 'rfg' ? 'selected' : ''} onMouseDown={() => handleNav('/rfg')}><FaMedal /></div>
+        <div className={elName === 'races' ? 'selected' : ''} onMouseDown={() => handleNav('/races')}><FaPersonRunning /></div>
+        <div className={elName === 'coolers' ? 'selected' : ''} onMouseDown={() => handleNav('/coolers')}><PiTreasureChestFill /></div>
         {user && user.admin && (
-          <div className={elName === 'admin' ? 'selected' : ''} onClick={() => handleNav('/admin')}>
+          <div className={elName === 'admin' ? 'selected' : ''} onMouseDown={() => handleNav('/admin')}>
             <MdAdminPanelSettings />
           </div>
         )}

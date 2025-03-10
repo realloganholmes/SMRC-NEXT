@@ -24,7 +24,9 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
+    console.log("HELLO");
     const userCookie = Cookie.get('user');
+    console.log(userCookie);
     if (userCookie) {
       setUser(JSON.parse(userCookie));
     }
